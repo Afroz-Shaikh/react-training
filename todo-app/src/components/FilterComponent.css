@@ -1,0 +1,14 @@
+.row-filter{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.actions{
+    display: flex;
+    flex-direction: row;
+    padding: auto;
+   
+    gap: 0.5rem;
+}

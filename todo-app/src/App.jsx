@@ -1,6 +1,8 @@
+import FilterComponent  from './components/FilterComponent';
 import "./styles.css";
-import TodoForm from "./TodoForm";
-import { useState } from "react";
+import TodoForm from "./components/TodoForm";
+import { act, useState } from "react";
+import TodoItem from "./components/TodoListItem";
 
 export default function App() {
   const [todos, setTodos] = useState([]);
@@ -57,45 +59,48 @@ export default function App() {
     setEditText("");
   }
 
+  function handleSelecAll(e){
+    const allCompleted = todos.every(todo => todo.completed);
+   const newTodos = todos.map(todo => ({...todo, completed: !allCompleted}));
+    setTodos(newTodos);
+  }
+
+
+function clearAll(){
+  setTodos([]);
+}
+
+function deleteSelected(){
+ const active = todos.filter(todo => !todo.completed);
+
+ setTodos(active);
+
+ 
+}
+
   return (
     <>
       <TodoForm onSubmit={addTodo} />
-      <hr className="solid-break" />
+      {/* Filters */}
+      
+     <FilterComponent   handleSelecAll={handleSelecAll} clearAll={clearAll} deleteSelected={deleteSelected}  />
+
+      {/* Filters */}
       <ul className="list">
         {todos.length === 0 && <li>No items</li>}
         {todos.map((todo) => {
           return (
-            <div key={todo.id}>
-              <li>
-                {editingId === todo.id ? (
-                  <form onSubmit={(e) => handleEditSubmit(e, todo.id)}>
-                    <input
-                      type="text"
-                      value={editText}
-                      onChange={handleEditChange}
-                      onBlur={(e) => handleEditSubmit(e, todo.id)}
-                      autoFocus
-                    />
-                  </form>
-                ) : (
-                  <label onDoubleClick={() => handleDoubleClick(todo.id)}>
-                    <input
-                      type="checkbox"
-                      checked={todo.completed}
-                      onChange={(e) => toggleTodo(todo.id, e.target.checked)}
-                    />
-                    <span>{todo.title}</span>
-                  </label>
-                )}
-                <button
-                  className="btn btn-danger"
-                  onClick={() => deleteTodo(todo.id)}
-                >
-                  X
-                </button>
-              </li>
-              <hr className="solid-break-light" />
-            </div>
+            <TodoItem 
+            key={todo.id}
+            todo={todo} 
+            editingId={editingId} 
+            editText={editText} 
+            handleEditSubmit={handleEditSubmit} 
+            handleEditChange={handleEditChange} 
+            handleDoubleClick={handleDoubleClick} 
+            toggleTodo={toggleTodo} 
+            deleteTodo={deleteTodo} 
+          />
           );
         })}
       </ul>

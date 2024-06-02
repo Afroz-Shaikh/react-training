@@ -4,7 +4,7 @@
 }
 
 body {
-  background: black;
+  background: #131313;
   color: white;
   display: flex;
   justify-content: center;
@@ -15,126 +15,27 @@ body {
   max-width: 100vw;
 }
 
-.subheading {
-  color: gray;
-  margin: 0;
-  margin-bottom: 1rem;
-}
-
 .solid-break {
-  border-top: 0.4px solid #ddd;
+  border-top: 0.4px solid black;
   margin: 1rem 0;
 }
 
 .solid-break-light {
-  border-top: 0.1px solid #f7f7f7;
+  border-top: 0.1px solid black;
   margin: 1rem 0;
 }
 
-.main-heading {
-  font-size: 1.7rem;
-  margin: 0;
-  margin-bottom: 0rem;
-  font-weight: 400;
-}
 
-.row {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  border: red 1px solid;
-  gap: 1rem;
-}
 
-.month {
-  font-size: 1.5rem;
-  margin: 0;
-  font-size: 2rem;
-  margin-bottom: 0rem;
-  border: green 1px solid;
-}
 
-.salutation {
-  font-size: 2.5rem;
-  margin: 0;
-  margin-bottom: 0rem;
-  border: green 1px solid;
-}
 
-.date {
-  margin-top: 0;
-  align-items: center;
-}
-.col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0rem;
-  margin: 0;
-  border: blue 1px solid;
-}
 
-.col-2 {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 0rem;
-  margin: 0;
-  border: blue 1px solid;
-}
-h5 {
-  margin: 0;
-  margin-bottom: 0rem;
-  font-size: 1.5rem;
-  font-weight: 400;
-}
 
-.textfield-form {
-  min-width: 80vw;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-}
 
-.textfield {
-  font-size: 1rem;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
+.itemList{
+  background-color: #252525;
+  padding: 4px;
   border-radius: 0.2rem;
-}
-
-.textfield-form input:focus {
-  border: 1px solid black;
-  outline: none;
-}
-
-.form-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-}
-
-.btn {
-  background: rgba(0, 122, 255, 0.1);
-  border: 1px solid #007aff;
-  color: #007aff;
-  padding: 0.25em 0.5em;
-  border-radius: 0.25em;
-  cursor: pointer;
-  outline: none;
-}
-
-.btn:hover,
-.btn:focus-visible {
-  background: rgb(228, 228, 228);
-}
-
-.btn.btn-danger {
-  border-radius: 0.5rem;
-  color: black;
-  background: rgb(228, 228, 228);
 }
 
 .btn.btn-danger:hover,
@@ -145,7 +46,7 @@ h5 {
 
 .new-item-form input {
   outline: none;
-  border: 1px solid #007aff;
+  border: 1px solid white;
   background: rgba(0, 122, 255, 0.1);
   border-radius: 0.25em;
   padding: 0.25em 0.5em;
@@ -175,6 +76,17 @@ h5 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+
+.btn {
+  background: #F6C666;
+  border: 1px solid #F6C666;
+  color: black;
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
+  cursor: pointer;
+  outline: none;
 }
 
 .list li label {

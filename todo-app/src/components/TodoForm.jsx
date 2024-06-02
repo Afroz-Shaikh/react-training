@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import "./TodoForm.css";
 export default function TodoForm({ onSubmit }) {
-  //   props.onSubmit(newItem);
+ 
   const [newItem, setItem] = useState("");
 
   function handleSubmit(e) {
@@ -12,9 +13,7 @@ export default function TodoForm({ onSubmit }) {
 
   return (
     <form className="textfield-form" onSubmit={handleSubmit}>
-      {/* <h1 className="main-heading" htmlFor="item">
-        Dead Simple Tasks
-      </h1> */}
+     
       <div className="row">
         <div className="col">
           <h5 className="month">Feb</h5>
@@ -25,9 +24,7 @@ export default function TodoForm({ onSubmit }) {
           <h5>What is your plan for today</h5>
         </div>
       </div>
-      <p className="subheading" htmlFor="item">
-        Todo List made simple
-      </p>
+      
       <div className="form-row">
         <input
           type="text"
