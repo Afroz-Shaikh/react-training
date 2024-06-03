@@ -1,30 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import "./AlertComponent.css"; // Import CSS for styling the modal
 
-function AlertComponent() {
+function AlertComponent({ onSearch }) {
   const [showDialog, setShowDialog] = useState(false);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
 
   const handleSubmit = () => {
-    alert(`You entered: ${inputValue}`);
+    onSearch(inputValue);
     setShowDialog(false);
   };
 
   return (
     <div>
       {showDialog && (
-        <div>
-          <label>
-            Enter something:
-            <input type="text" value={inputValue} onChange={handleInputChange} />
-          </label>
-          <button onClick={handleSubmit}>Submit</button>
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={() => setShowDialog(false)}>
+              &times;
+            </span>
+            <label>
+              Search for:
+              <input
+                className="search-field"
+                type="text"
+                value={inputValue}
+                onChange={handleInputChange}
+              />
+            </label>
+            <button className="search-btn" onClick={handleSubmit}>
+              Submit
+            </button>
+          </div>
         </div>
       )}
-      <button onClick={() => setShowDialog(true)}>Show Dialog</button>
+      <button className="btn" onClick={() => setShowDialog(true)}>
+        🔎
+      </button>
     </div>
   );
 }

@@ -1,34 +1,46 @@
-.completed{
-    text-decoration: line-through;
-    color: wheat;
+.completed {
+  text-decoration: line-through;
+  color: wheat;
 }
 
-.itemList{
-    display: flex;
-   flex-direction: row;
-   justify-content: space-between;
-   
+.del {
+  color: red;
+  background-color: #333;
+  box-shadow: none;
+  border: none;
+}
 
+.itemList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .btn {
-    background: #F6C666;
-    border: 1px solid #F6C666;
-    color: black;
-    padding: 0.25em 0.5em;
-    border-radius: 0.25em;
-    cursor: pointer;
-    outline: none;
-  }
-  
-  .btn:hover,
-  .btn:focus-visible {
-    background: rgb(228, 228, 228);
-  }
-  
-  .btn.btn-danger {
-    border-radius: 0.3rem;
-    border-color: red;
-    color: black;
-   
-  }
+  background: #f6c666;
+  border: 1px solid #f6c666;
+  color: black;
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background: rgb(228, 228, 228);
+}
+
+.btn.btn-danger {
+  border-radius: 0.3rem;
+  color: black;
+}
+
+.editInput {
+  outline: none;
+  border: 1px solid #333;
+  border-radius: 0.5rem;
+  background-color: #333;
+  color: white;
+  padding: 0.25em 0.5em;
+}

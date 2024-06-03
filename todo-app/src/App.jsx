@@ -1,4 +1,4 @@
-import FilterComponent  from './components/FilterComponent';
+import FilterComponent from "./components/FilterComponent";
 import "./styles.css";
 import TodoForm from "./components/TodoForm";
 import { act, useState } from "react";
@@ -8,6 +8,8 @@ export default function App() {
   const [todos, setTodos] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [editText, setEditText] = useState("");
+  const [searchText, setSearchText] = useState("");
+  const [isFiltered, setIsFiltered] = useState(false);
 
   function addTodo(title) {
     setTodos((currentTodos) => {
@@ -59,48 +61,62 @@ export default function App() {
     setEditText("");
   }
 
-  function handleSelecAll(e){
-    const allCompleted = todos.every(todo => todo.completed);
-   const newTodos = todos.map(todo => ({...todo, completed: !allCompleted}));
+  function handleSelecAll(e) {
+    const allCompleted = todos.every((todo) => todo.completed);
+    const newTodos = todos.map((todo) => ({
+      ...todo,
+      completed: !allCompleted,
+    }));
     setTodos(newTodos);
   }
 
+  function clearAll() {
+    setTodos([]);
+  }
 
-function clearAll(){
-  setTodos([]);
-}
+  function deleteSelected() {
+    const active = todos.filter((todo) => !todo.completed);
 
-function deleteSelected(){
- const active = todos.filter(todo => !todo.completed);
+    setTodos(active);
+  }
 
- setTodos(active);
+  function handleSearch(searchText) {
+    setSearchText(searchText);
+    setIsFiltered(true);
+  }
 
- 
-}
+  const filteredTodos = todos.filter((todo) => todo.title.includes(searchText));
 
   return (
     <>
       <TodoForm onSubmit={addTodo} />
       {/* Filters */}
-      
-     <FilterComponent   handleSelecAll={handleSelecAll} clearAll={clearAll} deleteSelected={deleteSelected}  />
+
+      <FilterComponent
+        handleSelecAll={handleSelecAll}
+        clearAll={clearAll}
+        deleteSelected={deleteSelected}
+        onSearch={handleSearch}
+        isFiltered={isFiltered}
+        setIsFiltered={setIsFiltered}
+      />
 
       {/* Filters */}
       <ul className="list">
-        {todos.length === 0 && <li>No items</li>}
-        {todos.map((todo) => {
+        {(isFiltered ? filteredTodos : todos).length === 0 && <li>No items</li>}
+        {(isFiltered ? filteredTodos : todos).map((todo) => {
           return (
-            <TodoItem 
-            key={todo.id}
-            todo={todo} 
-            editingId={editingId} 
-            editText={editText} 
-            handleEditSubmit={handleEditSubmit} 
-            handleEditChange={handleEditChange} 
-            handleDoubleClick={handleDoubleClick} 
-            toggleTodo={toggleTodo} 
-            deleteTodo={deleteTodo} 
-          />
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              editingId={editingId}
+              editText={editText}
+              handleEditSubmit={handleEditSubmit}
+              handleEditChange={handleEditChange}
+              handleDoubleClick={handleDoubleClick}
+              toggleTodo={toggleTodo}
+              deleteTodo={deleteTodo}
+            />
           );
         })}
       </ul>
